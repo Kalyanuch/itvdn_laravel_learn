@@ -18,3 +18,6 @@ Route::get('/', function () {
 Route::get('/test', function () {
     return "ITVDN Laravel test :)";
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
