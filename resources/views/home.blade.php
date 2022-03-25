@@ -16,7 +16,7 @@
 
                     You are logged in!
                     @if(Auth::user()->hasRole('editor'))
-                    <a class="btn btn-default" href="#">Admin panel</a>
+                    <a class="btn btn-default" href="{{ route('admin.post')  }}">Admin panel</a>
                     @endif
                 </div>
             </div>

@@ -29,3 +29,7 @@ Route::get('/roles', function() {
         'roles' => $user->roles
     ]);
 });
+
+Route::get('/admin', function() {
+    return view('admin');
+})->name('admin.post')/*->middleware('can:edit-posts')*/;
