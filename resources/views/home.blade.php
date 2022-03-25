@@ -15,6 +15,9 @@
                     @endif
 
                     You are logged in!
+                    @if(Auth::user()->hasRole('editor'))
+                    <a class="btn btn-default" href="#">Admin panel</a>
+                    @endif
                 </div>
             </div>
         </div>
