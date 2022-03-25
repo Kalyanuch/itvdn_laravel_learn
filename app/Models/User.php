@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use http\Exception\UnexpectedValueException;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -35,5 +36,19 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'roles_user', 'userId', 'roleId');
+    }
+
+    public function hasAccess(array $permissions): bool
+    {
+        foreach($this->roles as $role)
+            if($role->hasAccess($permissions))
+                return true;
+
+        return false;
+    }
+
+    public function hasRole($roleSlug): bool
+    {
+        return $this->roles()->where('slug', $roleSlug)->count() == 1;
     }
 }
