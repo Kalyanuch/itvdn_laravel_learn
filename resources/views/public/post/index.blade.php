@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+    <a href="{{ route('post.create') }}" class="btn btn-default">Create new</a>
     <table class="table table-hover">
         <thead>
             <tr>
