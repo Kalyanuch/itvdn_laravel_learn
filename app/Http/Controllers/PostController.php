@@ -90,7 +90,16 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        $post->fill($request->all());
+
+        if(!$post->save())
+            return redirect()->back()->withErrors('Post update failed');
+
+        $request->session()->flash('flash_message', 'Post updated!');
+
+        return redirect()->route('post.index');
     }
 
     /**
