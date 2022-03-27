@@ -11,6 +11,7 @@
                 <th>Title</th>
                 <th>Status</th>
                 <th>Operations</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -18,9 +19,19 @@
         @foreach($posts as $post)
             <tr>
                 <td>{{ $post->id }}</td>
-                <td>{{ $post->title }}</td>
+                <td><a href="{{ route('post.show', ['id' => $post->id]) }}">{{ $post->title }}</a></td>
                 <td>@if($post->published)<span class="bg-success">Published</span>@else<span class="bg-danger">Unpublished</span>@endif</td>
-                <td></td>
+                <td>
+                    <a class="btn btn-default" href="{{ route('post.edit', ['id' => $post->id]) }}">Edit</a>
+                    <a class="btn btn-danger" href="{{ route('post.destroy', ['id' => $post->id]) }}">Delete</a>
+                </td>
+                <td>
+                    <form method="post" action="{{ route('post.destroy', ['id' => $post->id]) }}">
+                        {{ csrf_field() }}
+                        {{ method_field('delete') }}
+                        <input type="submit" class="btn btn-danger" value="Delete" />
+                    </form>
+                </td>
             </tr>
         @endforeach
         @endif
