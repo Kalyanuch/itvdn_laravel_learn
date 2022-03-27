@@ -54,7 +54,9 @@ class RegisterController extends Controller
 
         $this->guard()->login($user);
 
-        SendRegistrationMail::dispatch($user);
+        //SendRegistrationMail::dispatch($user);
+
+        Mail::to($user->email)->queue(new RegistrationMail($user->name));
 
         return $this->registered($request, $user)
             ?: redirect($this->redirectPath());
