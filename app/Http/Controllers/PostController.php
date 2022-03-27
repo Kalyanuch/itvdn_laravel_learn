@@ -6,7 +6,6 @@ use App\Http\Requests\CreatePostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 
 class PostController extends Controller
 {
@@ -64,7 +63,9 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        return view('public.post.show', ['post' => $post]);
     }
 
     /**
