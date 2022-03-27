@@ -35,3 +35,5 @@ Route::get('/admin', function() {
 })->name('admin.post')/*->middleware('can:edit-posts')*/;
 
 Route::resource('post', 'PostController');
+
+Route::get('test-provider', 'TestController@testProvider');
