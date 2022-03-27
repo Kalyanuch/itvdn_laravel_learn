@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
+        @include('partial.error')
         <div class="row">
             <div class="col-md-offset-4 col-md-4">
                 <form method="post" action="{{ route('post.store') }}">

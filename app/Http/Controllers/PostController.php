@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreatePostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class PostController extends Controller
 {
@@ -32,12 +35,25 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\CreatePostRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreatePostRequest $request)
     {
-        //
+        //dd($request->all());
+
+        $post = Post::create([
+            'title' => $request->get('title'),
+            'body' => $request->get('body'),
+            'userId' => Auth::user()->id
+        ]);
+
+        if(!$post)
+            return redirect()->back();
+
+        $request->session()->flash('flash_message', 'Post added!');
+
+        return redirect()->route('post.index');
     }
 
     /**
