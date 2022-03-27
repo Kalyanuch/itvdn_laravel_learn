@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Requests\RegisterRequest;
+use App\Jobs\SendRegistrationMail;
 use App\Mail\RegistrationMail;
 use App\Models\Role;
 use App\Models\User;
@@ -53,7 +54,7 @@ class RegisterController extends Controller
 
         $this->guard()->login($user);
 
-        Mail::to($user->email)->send(new RegistrationMail($user->name));
+        SendRegistrationMail::dispatch($user);
 
         return $this->registered($request, $user)
             ?: redirect($this->redirectPath());
