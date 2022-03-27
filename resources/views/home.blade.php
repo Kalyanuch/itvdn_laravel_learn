@@ -18,6 +18,7 @@
                     @if(Auth::user()->hasRole('editor'))
                     <a class="btn btn-default" href="{{ route('admin.post')  }}">Admin panel</a>
                     @endif
+                    <a class="btn btn-default" href="{{ route('post.index') }}">Posts</a>
                 </div>
             </div>
         </div>
