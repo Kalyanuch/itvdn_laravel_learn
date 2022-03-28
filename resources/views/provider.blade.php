@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<h3>{{ $name }}</h3>
-<p>{{ $prop }}</p>
+<h3>{{ Super::getName() }}</h3>
+<p>{{ Super::getProperty() }}</p>
 @endsection

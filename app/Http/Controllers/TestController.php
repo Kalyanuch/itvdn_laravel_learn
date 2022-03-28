@@ -13,6 +13,7 @@ class TestController extends Controller
         /*
         return view('provider', ['name' => $component->getName(), 'prop' => $component->getProperty()]);
         */
-        return view('provider', ['name' => Super::getName(), 'prop' => Super::getProperty()]);
+        //return view('provider', ['name' => Super::getName(), 'prop' => Super::getProperty()]);
+        return view('provider');
     }
 }
