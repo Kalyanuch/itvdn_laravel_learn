@@ -2,6 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\Mail\RegistrationMail;
+use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -16,6 +18,8 @@ class RegistrationTest extends TestCase
      */
     public function testExample()
     {
+        Mail::fake();
+
         $name = 'Kolya';
 
         $this->post('/register', [
@@ -29,6 +33,7 @@ class RegistrationTest extends TestCase
             'name' => $name
         ]);
 
-        //$this->assertTrue(true);
+        //Mail::assertSent(RegistrationMail::class);
+        Mail::assertQueued(RegistrationMail::class);
     }
 }
