@@ -9,6 +9,6 @@ class TestController extends Controller
 {
     public function testProvider(SuperComponent $component)
     {
-        return view('provider', ['name' => $component->getName()]);
+        return view('provider', ['name' => $component->getName(), 'prop' => $component->getProperty()]);
     }
 }

@@ -25,7 +25,10 @@ class SuperServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(SuperComponent::class, function() {
-            return new SuperComponent('intelligence');
+            $component = new SuperComponent('intelligence');
+            $component->setProperty('WOW! This is new property!!');
+
+            return $component;
         });
     }
 }
