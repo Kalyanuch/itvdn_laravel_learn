@@ -2,7 +2,9 @@
 
 namespace App\Components;
 
-class SuperComponent
+use App\Contracts\SuperContract;
+
+class SuperComponent implements SuperContract
 {
     protected $name = 'super ';
     protected $property = 'super property ';

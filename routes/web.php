@@ -37,3 +37,4 @@ Route::get('/admin', function() {
 Route::resource('post', 'PostController');
 
 Route::get('test-provider', 'TestController@testProvider');
+Route::get('test-contract', 'TestController@testContract');

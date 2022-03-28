@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 //use App\Components\SuperComponent;
+use App\Contracts\SuperContract;
 use App\Facades\Super;
 
 class TestController extends Controller
@@ -15,5 +16,10 @@ class TestController extends Controller
         */
         //return view('provider', ['name' => Super::getName(), 'prop' => Super::getProperty()]);
         return view('provider');
+    }
+
+    public function testContract(SuperContract $component)
+    {
+        return $component->getName();
     }
 }
