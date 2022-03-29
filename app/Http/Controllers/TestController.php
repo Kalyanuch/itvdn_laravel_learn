@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 //use App\Components\SuperComponent;
 use App\Contracts\SuperContract;
-use App\Facades\Super;
+use Kolya\Meta\Meta;
 
 class TestController extends Controller
 {
@@ -21,5 +21,10 @@ class TestController extends Controller
     public function testContract(SuperContract $component)
     {
         return $component->getName();
+    }
+
+    public function testPackage()
+    {
+        return Meta::getPropertyValue();
     }
 }

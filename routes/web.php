@@ -38,3 +38,4 @@ Route::resource('post', 'PostController');
 
 Route::get('test-provider', 'TestController@testProvider');
 Route::get('test-contract', 'TestController@testContract');
+Route::get('test-package', 'TestController@testPackage');
